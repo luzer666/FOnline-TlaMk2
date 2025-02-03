@@ -1,4 +1,4 @@
-//
+///
 #include "client_main_import.fos"
 #include "client_main_variable.fos"
 #include "client_main_h.fos"
@@ -9,7 +9,7 @@ bool main_start()
 {
     EffExt = __OpenGLRendering ? ".glsl" : ".fx";
 	
-    // Подключение дополнительных ini
+    // ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»Гµ ini
     AppendIfaceIni( "list.ini" );
     int iEnd = 0;
     SafeStrToInt( GetIfaceIniStr( "CountIniFiles" ), iEnd );
@@ -45,7 +45,7 @@ bool main_start()
     SafeStrToInt( GetIfaceIniStr( "AssistWidth" ), Assist::Option::GUI::Width );
     SafeStrToInt( GetIfaceIniStr( "AssistHeight" ), Assist::Option::GUI::Height );
 
-    // Подрыв мин
+    // ГЏГ®Г¤Г°Г»Гў Г¬ГЁГ­
     int[] coords = GetIfaceCoords( "JackalBtnCoords" );
 
     ExplodeButton exp;
@@ -55,7 +55,7 @@ bool main_start()
     .CallbackMouseClick( exp )
     .DownPic( GetIfaceIniStr( "JackalBtnPicDn" ) );
 
-    // TabaK. Интерфейс Теслы
+    // TabaK. Г€Г­ГІГҐГ°ГґГҐГ©Г± Г’ГҐГ±Г«Г»
     
     Tesla_Discharge_Button discharge_button;
     Tesla_Display          teslaDisplay;
@@ -81,7 +81,7 @@ bool main_start()
     .Text( "0", FONT_BIG_NUM, COLOR_LGRAY, COLOR_DRED, FT_CENTERY | FT_CENTERR )
     .CallbackInit( teslaDisplay );
 
-    // Автовыстрел. TabaK
+    // ГЂГўГІГ®ГўГ»Г±ГІГ°ГҐГ«. TabaK
 
     bool TextOutput = strlwr( GetIfaceIniStr( "TextOutput" ) ) == "true";	
     Aim::Option::GUI::TorsoButtonImage.Load( GetIfaceIniStr( "TorsoButtonPic" ), int(PT_ART_INTRFACE) );
@@ -199,7 +199,7 @@ bool main_start()
     .CallbackInit( ExtraSlotText() )
     .Clickable( false );
 
-    // Подсчет абсолютных координат основного слота:
+    // ГЏГ®Г¤Г±Г·ГҐГІ Г ГЎГ±Г®Г«ГѕГІГ­Г»Гµ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ Г®Г±Г­Г®ГўГ­Г®ГЈГ® Г±Г«Г®ГІГ :
     int x = 0;
     StrToInt( GetIfaceIniStr( "IntX" ), x );
     IntItemCoords = GetIfaceQuadreCoords( "IntItem" );
@@ -215,30 +215,30 @@ bool main_start()
     IntItemCoords[ 2 ] += range[ 0 ];
     IntItemCoords[ 3 ] += range[ 1 ];
 
-    // Назначение координат текста кнопок главного меню из default.ini.
+    // ГЌГ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ ГІГҐГЄГ±ГІГ  ГЄГ­Г®ГЇГ®ГЄ ГЈГ«Г ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ ГЁГ§ default.ini.
     LogPlayTextCoords = GetIfaceCoords( "LogPlayText" );
     LogRegTextCoords = GetIfaceCoords( "LogRegText" );
     LogOptionsTextCoords = GetIfaceCoords( "LogOptionsText" );
     LogCreditsTextCoords = GetIfaceCoords( "LogCreditsText" );
     LogExitTextCoords = GetIfaceCoords( "LogExitText" );
 
-    // Назначение цвета кнопок текста главного меню из default.ini.
+    // ГЌГ Г§Г­Г Г·ГҐГ­ГЁГҐ Г¶ГўГҐГІГ  ГЄГ­Г®ГЇГ®ГЄ ГІГҐГЄГ±ГІГ  ГЈГ«Г ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ ГЁГ§ default.ini.
     GetIfaceColor( "LogPlayTextColor", LogPlayTextColor );
     GetIfaceColor( "LogRegTextColor", LogRegTextColor );
     GetIfaceColor( "LogOptionsTextColor", LogOptionsTextColor );
     GetIfaceColor( "LogCreditsTextColor", LogCreditsTextColor );
     GetIfaceColor( "LogExitTextColor", LogExitTextColor );
 
-    // Назначение цвета текста кнопок главного меню при наведении из default.ini.
+    // ГЌГ Г§Г­Г Г·ГҐГ­ГЁГҐ Г¶ГўГҐГІГ  ГІГҐГЄГ±ГІГ  ГЄГ­Г®ГЇГ®ГЄ ГЈГ«Г ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ ГЇГ°ГЁ Г­Г ГўГҐГ¤ГҐГ­ГЁГЁ ГЁГ§ default.ini.
     GetIfaceColor( "LogPlayTextColorActive", LogPlayTextColorActive );
     GetIfaceColor( "LogRegTextColorActive", LogRegTextColorActive );
     GetIfaceColor( "LogOptionsTextColorActive", LogOptionsTextColorActive );
     GetIfaceColor( "LogCreditsTextColorActive", LogCreditsTextColorActive );
     GetIfaceColor( "LogExitTextColorActive", LogExitTextColorActive );
 
-    // Назначение cмещения, всплывающего при наведении текста на кнопках главного меню, относительно основного.
+    // ГЌГ Г§Г­Г Г·ГҐГ­ГЁГҐ cГ¬ГҐГ№ГҐГ­ГЁГї, ГўГ±ГЇГ«Г»ГўГ ГѕГ№ГҐГЈГ® ГЇГ°ГЁ Г­Г ГўГҐГ¤ГҐГ­ГЁГЁ ГІГҐГЄГ±ГІГ  Г­Г  ГЄГ­Г®ГЇГЄГ Гµ ГЈГ«Г ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ, Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г®Г±Г­Г®ГўГ­Г®ГЈГ®.
     LogTextOffset = GetIfaceCoords( "LogTextOffset" );
-    // Шрифт текста кнопок главного меню.
+    // ГГ°ГЁГґГІ ГІГҐГЄГ±ГІГ  ГЄГ­Г®ГЇГ®ГЄ ГЈГ«Г ГўГ­Г®ГЈГ® Г¬ГҐГ­Гѕ.
     SafeStrToInt( GetIfaceIniStr( "LogTextFont" ), LogTextFont );
 
     Login::Option::GUI::Button.Load( GetIfaceIniStr( "LogButtonSprite" ), PT_ART_INTRFACE );
@@ -603,7 +603,7 @@ bool main_render_iface( uint layer )
             // lampaAnimSpriteId=LoadSprite("lampa_anim.fofrm", int(PT_ART_INTRFACE));
             // DrawSprite(lampaAnimSpriteId, -1, 0, 0, __ScreenWidth , __ScreenHeight, true, false,0);
 
-            // отрисовка нового меню
+            // Г®ГІГ°ГЁГ±Г®ГўГЄГ  Г­Г®ГўГ®ГЈГ® Г¬ГҐГ­Гѕ
             DrawText( GetMsgStr( TEXTMSG_GAME, STR_LOGIN_PLAY ), LogPlayTextCoords[ 0 ], LogPlayTextCoords[ 1 ],  300, __ScreenHeight, LogPlayTextColor, LogTextFont, FT_NOBREAK );
             DrawText( GetMsgStr( TEXTMSG_GAME, STR_LOGIN_REGISTRATION ), LogRegTextCoords[ 0 ], LogRegTextCoords[ 1 ], 300, __ScreenHeight, LogRegTextColor, LogTextFont, FT_NOBREAK );
             /*textButton=GetMsgStr(TEXTMSG_GAME, STR_LOGIN_OPTIONS);
@@ -960,7 +960,7 @@ bool main_render_iface( uint layer )
                 else if( chosen.Param[ ST_BIG_CITY_PENALTY ] != 0 )
                 {
                     for( uint i = 600, iEnd = 630; i < iEnd; i++ )
-                        if( chosen.Param[ i ] >= 50000 )                         // Все еще враг.
+                        if( chosen.Param[ i ] >= 50000 )                         // Г‚Г±ГҐ ГҐГ№ГҐ ГўГ°Г ГЈ.
                         {
                             penalty = chosen.Param[ i ];
                             break;
@@ -1187,14 +1187,14 @@ bool main_render_iface( uint layer )
 
         // Here you can draw on global map
 
-        // bool  __GmapActive - активна ли глобальная карта и все ли следующие нижеприведенные переменные корректны;
-        // bool  __GmapWait   - включен режим ожидания ответа о подтверждении энкаунтера;
-        // float __GmapZoom   - текущий масштаб, не забывайте учитывать его при рисовании на карте;
-        // int   __GmapOffsetX/Y   - смещение карты от нулевой координаты (верхний-левый угол);
-        // int   __GmapGroupCurX/Y - координаты группы игрока;
-        // int   __GmapGroupToX/Y  - координаты точки назначения;
-        // float __GmapGroupSpeed  - текущая скорость передвижения.
-        // Для примера, расчет текущего пикселя группы:
+        // bool  __GmapActive - Г ГЄГІГЁГўГ­Г  Г«ГЁ ГЈГ«Г®ГЎГ Г«ГјГ­Г Гї ГЄГ Г°ГІГ  ГЁ ГўГ±ГҐ Г«ГЁ Г±Г«ГҐГ¤ГіГѕГ№ГЁГҐ Г­ГЁГ¦ГҐГЇГ°ГЁГўГҐГ¤ГҐГ­Г­Г»ГҐ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г»;
+        // bool  __GmapWait   - ГўГЄГ«ГѕГ·ГҐГ­ Г°ГҐГ¦ГЁГ¬ Г®Г¦ГЁГ¤Г Г­ГЁГї Г®ГІГўГҐГІГ  Г® ГЇГ®Г¤ГІГўГҐГ°Г¦Г¤ГҐГ­ГЁГЁ ГЅГ­ГЄГ ГіГ­ГІГҐГ°Г ;
+        // float __GmapZoom   - ГІГҐГЄГіГ№ГЁГ© Г¬Г Г±ГёГІГ ГЎ, Г­ГҐ Г§Г ГЎГ»ГўГ Г©ГІГҐ ГіГ·ГЁГІГ»ГўГ ГІГј ГҐГЈГ® ГЇГ°ГЁ Г°ГЁГ±Г®ГўГ Г­ГЁГЁ Г­Г  ГЄГ Г°ГІГҐ;
+        // int   __GmapOffsetX/Y   - Г±Г¬ГҐГ№ГҐГ­ГЁГҐ ГЄГ Г°ГІГ» Г®ГІ Г­ГіГ«ГҐГўГ®Г© ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» (ГўГҐГ°ГµГ­ГЁГ©-Г«ГҐГўГ»Г© ГіГЈГ®Г«);
+        // int   __GmapGroupCurX/Y - ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЈГ°ГіГЇГЇГ» ГЁГЈГ°Г®ГЄГ ;
+        // int   __GmapGroupToX/Y  - ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГІГ®Г·ГЄГЁ Г­Г Г§Г­Г Г·ГҐГ­ГЁГї;
+        // float __GmapGroupSpeed  - ГІГҐГЄГіГ№Г Гї Г±ГЄГ®Г°Г®Г±ГІГј ГЇГҐГ°ГҐГ¤ГўГЁГ¦ГҐГ­ГЁГї.
+        // Г„Г«Гї ГЇГ°ГЁГ¬ГҐГ°Г , Г°Г Г±Г·ГҐГІ ГІГҐГЄГіГ№ГҐГЈГ® ГЇГЁГЄГ±ГҐГ«Гї ГЈГ°ГіГЇГЇГ»:
         // x=__GmapGroupX / __GmapZoom + __GmapOffsetX, y=__GmapGroupY / __GmapZoom + __GmapOffsetY.
     }
 	return true;
@@ -1207,7 +1207,7 @@ void soft_render_critter( CritterCl& cr, int x, int y, int w, int h )
 
 void DrawBorder( CritterCl& cr, uint distance, uint color )
 {
-    // TabaK. Перепилил отрисовку. Старая искажалась при масштабировании.
+    // TabaK. ГЏГҐГ°ГҐГЇГЁГ«ГЁГ« Г®ГІГ°ГЁГ±Г®ГўГЄГі. Г‘ГІГ Г°Г Гї ГЁГ±ГЄГ Г¦Г Г«Г Г±Гј ГЇГ°ГЁ Г¬Г Г±ГёГІГ ГЎГЁГ°Г®ГўГ Г­ГЁГЁ.
     int    x = 0;
     int    y = 0;
 
@@ -1340,7 +1340,7 @@ void DrawTimeouts()
         DrawText( timeouts, 10, __GmapActive ? 100 : 40, __ScreenWidth, __ScreenHeight, COLOR_GREEN, FONT_FALLOUT, FT_ALIGN | FT_UPPER );
 }
 
-// используется для вызова окна меркконтроля
+// ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г¤Г«Гї ГўГ»Г§Г®ГўГ  Г®ГЄГ­Г  Г¬ГҐГ°ГЄГЄГ®Г­ГІГ°Г®Г«Гї
 void ShowMercScreen( int param0, int param1, int param2, string@ param3, int[] @ param4 )
 {
     ChangeCursor( CURSOR_DEFAULT );
@@ -1821,7 +1821,7 @@ bool key_down( uint8 key )
         }
         if( scr == CLIENT_MAIN_SCREEN_GAME )
         {
-            if( shiftDown && key != DIK_LSHIFT && key != DIK_RSHIFT )     // Автовыстрел
+            if( shiftDown && key != DIK_LSHIFT && key != DIK_RSHIFT )     // ГЂГўГІГ®ГўГ»Г±ГІГ°ГҐГ«
             {
                 switch( key )
                 {
@@ -2316,7 +2316,7 @@ bool main_in_message( string& message, int& sayType, uint& critterId, uint& dela
 }
 
 uint LastMessage = 0;
-uint MessagePerSecond = 0; // Fast Message Counter. Количество сообщений с разрывом менее секунды.
+uint MessagePerSecond = 0; // Fast Message Counter. ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© Г± Г°Г Г§Г°Г»ГўГ®Г¬ Г¬ГҐГ­ГҐГҐ Г±ГҐГЄГіГ­Г¤Г».
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////
 // Call on send message.
@@ -2353,7 +2353,7 @@ bool main_out_message( string& message, int& sayType )
             return false;
         }
 
-        if( message == "~gui" && valid( chos ) )   // Включение ГУИ.
+        if( message == "~gui" && valid( chos ) )   // Г‚ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГѓГ“Г€.
         {
             message = "~param 0 " + ST_ADMINGUI + ( chos.Param[ ST_ADMINGUI ] == 0 ? " 1" : " 0" );
             return true;
@@ -2412,20 +2412,20 @@ bool main_out_message( string& message, int& sayType )
             return true;
         }
 
-        // Создние фракции. Только админ.
+        // Г‘Г®Г§Г¤Г­ГЁГҐ ГґГ°Г ГЄГ¶ГЁГЁ. Г’Г®Г«ГјГЄГ® Г Г¤Г¬ГЁГ­.
         if( message.length() > 4 && substring( message, 0, 4 ) == "~cf " )
         {
             Message( substring( message, 0, 3 ) );
             RunServerScript( "Mk2@Fractions::_CreateFraction", 0, 0, 0, substring( message, 4, message.length() ), null );
         }
-        // Получить уровень
+        // ГЏГ®Г«ГіГ·ГЁГІГј ГіГ°Г®ГўГҐГ­Гј
         if( strlwr( message ) == "~get_penalty" || strlwr( message ) == "~getpenalty" || strlwr( message ) == "~gp" )
         {
             RunServerScriptUnsafe( "Mk2@unsafe_CityGuard::GetPenalty", 0, 0, 0, null, null );
             return false;
         }
 		
-        // Получить ресурсы для крафта
+        // ГЏГ®Г«ГіГ·ГЁГІГј Г°ГҐГ±ГіГ°Г±Г» Г¤Г«Гї ГЄГ°Г ГґГІГ 
         /*if(message.length() > 5 && substring(message, 0, 5)=="~fix ")
            {
                 int pos=0;
@@ -2476,7 +2476,7 @@ bool main_out_message( string& message, int& sayType )
 
     if( LastMessage + 1000 > GetTick() )
     {
-        if( ++MessagePerSecond > 5 && valid( chos ) )   // Если накопилось более пяти сообщений с разрывом менее секунды - тушим гандону клиент
+        if( ++MessagePerSecond > 5 && valid( chos ) )   // Г…Г±Г«ГЁ Г­Г ГЄГ®ГЇГЁГ«Г®Г±Гј ГЎГ®Г«ГҐГҐ ГЇГїГІГЁ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© Г± Г°Г Г§Г°Г»ГўГ®Г¬ Г¬ГҐГ­ГҐГҐ Г±ГҐГЄГіГ­Г¤Г» - ГІГіГёГЁГ¬ ГЈГ Г­Г¤Г®Г­Гі ГЄГ«ГЁГҐГ­ГІ
         {
             if( chos.Param[ DAMAGE_TONGUE ] == 0 )
                 RunServerScriptUnsafe( "Mk2@unsafe_main::MutePlayer", 0, 0, 0, null, null );
@@ -2501,15 +2501,15 @@ bool main_out_message( string& message, int& sayType )
         {
             int  eraseCount = 1;
             int8 ch = message[ 1 ];
-            if(    ch == 'к' || ch == 'К' || ch == 's' || ch == 'S' )
+            if(    ch == 'ГЄ' || ch == 'ГЉ' || ch == 's' || ch == 'S' )
                 sayType = SAY_SHOUT;
-            else if( ch == 'э' || ch == 'Э' || ch == 'e' || ch == 'E' )
+            else if( ch == 'ГЅ' || ch == 'Гќ' || ch == 'e' || ch == 'E' )
                 sayType = SAY_EMOTE;
-            else if( ch == 'ш' || ch == 'Ш' || ch == 'w' || ch == 'W' )
+            else if( ch == 'Гё' || ch == 'Г' || ch == 'w' || ch == 'W' )
                 sayType = SAY_WHISP;
-            else if( ch == 'с' || ch == 'С' || ch == '$'            )
+            else if( ch == 'Г±' || ch == 'Г‘' || ch == '$'            )
                 sayType = SAY_SOCIAL;
-            else if( ch == 'р' || ch == 'Р' || ch == 'r' || ch == 'R' )
+            else if( ch == 'Г°' || ch == 'Гђ' || ch == 'r' || ch == 'R' )
                 sayType = SAY_RADIO;
 
             if( sayType != SAY_NORM )
@@ -3549,9 +3549,9 @@ string critter_description( CritterCl& cr, int lookType )
     return result;
 }
 
-void soundItem_map_changed( ItemCl& itemNow, ItemCl& itemBefore ) // Вызывается для дверей и контейнеров с натива.
+void soundItem_map_changed( ItemCl& itemNow, ItemCl& itemBefore ) // Г‚Г»Г§Г»ГўГ ГҐГІГ±Гї Г¤Г«Гї Г¤ГўГҐГ°ГҐГ© ГЁ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г®Гў Г± Г­Г ГІГЁГўГ .
 {
-    // TabaK. Запилил озвучку дверей и контейнеров. Будет грузить - тупо закоментируйте.
+    // TabaK. Г‡Г ГЇГЁГ«ГЁГ« Г®Г§ГўГіГ·ГЄГі Г¤ГўГҐГ°ГҐГ© ГЁ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г®Гў. ГЃГіГ¤ГҐГІ ГЈГ°ГіГ§ГЁГІГј - ГІГіГЇГ® Г§Г ГЄГ®Г¬ГҐГ­ГІГЁГ°ГіГ©ГІГҐ.
     string soundName = itemNow.GetType() == ITEM_TYPE_DOOR ? "SXDOORS0.ACM" : "IXCNTNR0.ACM";
     if( FLAG( itemNow.LockerCondition, LOCKER_ISOPEN ) )
         soundName[ 1 ] = SOUND_DOOR_OPEN;
@@ -3663,11 +3663,11 @@ bool main_critter_action( bool localCall, CritterCl& cr, int action, int actionE
     {
     case ACTION_MOVE:
     {
-        if( actionExt != 0 )         // Поддержка нескольких криттеров на гексе.
+        if( actionExt != 0 )         // ГЏГ®Г¤Г¤ГҐГ°Г¦ГЄГ  Г­ГҐГ±ГЄГ®Г«ГјГЄГЁГµ ГЄГ°ГЁГІГІГҐГ°Г®Гў Г­Г  ГЈГҐГЄГ±ГҐ.
         {
             uint16 x = ( actionExt ) & 0xFFFF;
             uint16 y = ( actionExt >> 16 ) & 0xFFFF;
-            // Убираем криттера с гекса.
+            // Г“ГЎГЁГ°Г ГҐГ¬ ГЄГ°ГЁГІГІГҐГ°Г  Г± ГЈГҐГЄГ±Г .
             // cr.HexX, cr.HexY
             if( valid( cr.LastHexCritter ) && cr.LastHexCritter.HexX == cr.HexX && cr.LastHexCritter.HexY == cr.HexY )
             {
@@ -4033,7 +4033,7 @@ void items_collection( int collection, ItemCl@[]& items )
        }*/
 }
 
-// TabaK. Слежка.
+// TabaK. Г‘Г«ГҐГ¦ГЄГ .
 
 void __SetTrack( int trackNum, int param1, int param2, string@ param3, int[] @ param4 )
 {
@@ -4160,7 +4160,7 @@ void ShowAwarenessInfo( CritterCl@ cr )
         {
             if( cr.IsPlayer() )
             {
-                if( !IS_ARENA_MAP( GetCurrentMapPid() ) || chosen.Param[ ST_ADMINGUI ] == 1 )      // rifleman17 28/08/13 вывод на картах арены ников только для админа
+                if( !IS_ARENA_MAP( GetCurrentMapPid() ) || chosen.Param[ ST_ADMINGUI ] == 1 )      // rifleman17 28/08/13 ГўГ»ГўГ®Г¤ Г­Г  ГЄГ Г°ГІГ Гµ Г Г°ГҐГ­Г» Г­ГЁГЄГ®Гў ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г Г¤Г¬ГЁГ­Г 
                     cr.NameOnHead += "|" + cr.NameColor + " " + cr.Name;
                 else
                     cr.NameOnHead += " ";
@@ -4188,7 +4188,7 @@ void ShowAwarenessInfo( CritterCl@ cr )
             // if(cr.IsPlayer()) cr.NameOnHead="|"+cr.NameColor+" "+cr.Name;
             if( cr.IsPlayer() && !IS_ARENA_MAP( GetCurrentMapPid() ) || chosen.Param[ ST_ADMINGUI ] == 1 )
             {
-                // rifleman17 28/08/13 вывод на картах арены ников только для админа
+                // rifleman17 28/08/13 ГўГ»ГўГ®Г¤ Г­Г  ГЄГ Г°ГІГ Гµ Г Г°ГҐГ­Г» Г­ГЁГЄГ®Гў ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г Г¤Г¬ГЁГ­Г 
                 cr.NameOnHead = "|" + cr.NameColor + " " + cr.Name;
             }
             /*else if(uint(cr.Param[MERC_MASTER_ID])!=0)
@@ -4224,7 +4224,7 @@ int[] GetIfaceCoords( string& key )
     return coords;
 }
 
-// Возвращает значения цветности RGB каналов в виде массива с трех элементов.
+// Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г§Г­Г Г·ГҐГ­ГЁГї Г¶ГўГҐГІГ­Г®Г±ГІГЁ RGB ГЄГ Г­Г Г«Г®Гў Гў ГўГЁГ¤ГҐ Г¬Г Г±Г±ГЁГўГ  Г± ГІГ°ГҐГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў.
 bool GetIfaceColorRGBA( string& key, uint8[]& colors )
 {
     int buffer = 0;
@@ -4294,7 +4294,7 @@ uint GetIfaceColorUD( const string& in key, const uint& in defColor )
     return COLOR_RGB( r, g, b );
 }
 
-// Возвращает две пары координат в виде массива с четырёх элементов.
+// Г‚Г®Г§ГўГ°Г Г№Г ГҐГІ Г¤ГўГҐ ГЇГ Г°Г» ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ Гў ГўГЁГ¤ГҐ Г¬Г Г±Г±ГЁГўГ  Г± Г·ГҐГІГ»Г°ВёГµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў.
 int[] GetIfaceQuadreCoords( string& key )
 {
     int[] quadreCoords = { 0, 0, 0, 0 };
